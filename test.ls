@@ -2,7 +2,7 @@ require! {
 	'./'.Part
 	'./'.Status
 	'./'.Header
-	\expect.js
+	'karma-sinon-expect'.expect
 }
 
 export
@@ -11,6 +11,9 @@ export
 			'is just instanceof': ->
 				expect (Part.is new Part) .to.be.ok!
 				expect (Part.is \nope)    .not.to.be.ok!
+		run:
+			'is abstract': ->
+				expect (new Part)~run .to.throw-exception /abstract/
 
 	Status:
 		'constructor sets code': ->
@@ -19,6 +22,10 @@ export
 			expect Status! .to.be.a Status
 		'is a subclass of Part': ->
 			expect new Status .to.be.a Part
+		'run sets the status code': ->
+			st = new Status 153
+			st.run response = {}
+			expect response .to.have.property \statusCode 153
 
 	Header:
 		'constructor sets name and value': ->
@@ -29,4 +36,9 @@ export
 			expect Header! .to.be.a Header
 		'is a subclass of Part': ->
 			expect new Header .to.be.a Part
+		'run sets a header': ->
+			he = new Header \foo \bar
+			res = set-header: expect.sinon.stub!
+			he.run res
+			expect res.set-header .to.be.called-with \foo \bar
 
