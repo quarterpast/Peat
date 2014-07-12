@@ -1,6 +1,6 @@
 {
   "name": "peat",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "response part objects for Oban",
   "main": "index.js",
   "scripts": {
