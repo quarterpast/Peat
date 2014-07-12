@@ -1,4 +1,4 @@
-# Oban responses
+# Oban responses [![Build Status](https://travis-ci.org/quarterto/Oban-response.svg)](https://travis-ci.org/quarterto/Oban-response)
 
 The classes that [Oban](/quarterto/Oban) uses for responses. `require` this in your route modules, and Oban in your server module.
 
