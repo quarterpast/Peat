@@ -1,8 +1,8 @@
-# Oban responses [![Build Status](https://travis-ci.org/quarterto/Oban-response.svg)](https://travis-ci.org/quarterto/Oban-response)
+# Peat [![Build Status](https://travis-ci.org/quarterto/Peat.svg)](https://travis-ci.org/quarterto/Peat)
 
 The classes that [Oban](/quarterto/Oban) uses for responses. `require` this in your route modules, and Oban in your server module.
 
-`npm install oban-response`
+`npm install peat`
 
 ## API
 ### Part
