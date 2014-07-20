@@ -3,14 +3,29 @@ require! {
 	'./'.Status
 	'./'.Header
 	'karma-sinon-expect'.expect
+	path
 }
+
+delete require.cache[path.resolve 'index.js']
+peat2 = require './'
 
 export
 	Part:
 		is:
-			'is just instanceof': ->
-				expect (Part.is new Part) .to.be.ok!
-				expect (Part.is \nope)    .not.to.be.ok!
+			'is pretty much just instanceof': ->
+				expect (Part.is new Part)   .to.be.ok!
+				expect (Part.is new Status) .to.be.ok!
+				expect (Part.is new Header) .to.be.ok!
+				expect (Part.is \nope)      .not.to.be.ok!
+			'can detect objects from another instance of the module': ->
+				expect (Part.is new peat2.Part)   .to.be.ok!
+				expect (Part.is new peat2.Status) .to.be.ok!
+				expect (Part.is new peat2.Header) .to.be.ok!
+			'returns the object': ->
+				expect (Part.is p = new Part)   .to.be p
+				expect (Part.is s = new Status) .to.be s
+				expect (Part.is h = new Header) .to.be h
+
 		run:
 			'is abstract': ->
 				expect (new Part)~run .to.throw-exception /abstract/

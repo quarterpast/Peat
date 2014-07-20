@@ -3,7 +3,14 @@
 #           | Chunk Buffer
 # type Result = Stream Part
 export class Part
-	@is = (v)-> if v@@display-name is @display-name then v else false
+	@is = (v)->
+		k = v.constructor
+		do
+			if k.display-name is \Part
+				return v
+		while k .= superclass
+		return false
+		
 	run: -> throw new Error 'abstract'
 
 export class Header extends Part
