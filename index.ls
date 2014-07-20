@@ -3,7 +3,7 @@
 #           | Chunk Buffer
 # type Result = Stream Part
 export class Part
-	@is = (v)-> if v instanceof this then v else false
+	@is = (v)-> if v@@display-name is @display-name then v else false
 	run: -> throw new Error 'abstract'
 
 export class Header extends Part
